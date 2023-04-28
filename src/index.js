@@ -27,8 +27,7 @@ function choisOneOfArray(listOfcountries) {
       'Too many matches found. Please enter a more specific name.'
     );
   } else if (listOfcountries.length > 1) {
-    console.log(listOfcountries);
-    // createListOfCountries(listOfcountries);
+    info.innerHTML = '';
     const markup = listOfcountries
       .map(country => {
         return `<li class='list_box'><img class='list_img' src="${country.flags.svg}" alt="flag">${country.name.official}</li>`;
@@ -36,15 +35,13 @@ function choisOneOfArray(listOfcountries) {
       .join('');
     list.innerHTML = markup;
   } else if (listOfcountries.length === 1) {
-    console.log(listOfcountries);
-    // createOneCountry(listOfcountries);
+    list.innerHTML = '';
+
     const markup = listOfcountries
       .map(country => {
-        return `<div>
-      <img src="${country.flags.svg}" width="50" height="30" alt="flag of ${
-          country.name.official
-        }">
-      <h2 class="country-title">${country.name.official}</h2></div>
+        return `<div class='info_wrapper'>
+      <img class='list_img' src="${country.flags.svg}" alt="flag">
+      <h2>${country.name.common}</h2></div>
             <p><b>Capital</b>: ${country.capital}</p>
             <p><b>Population</b>: ${country.population}</p>
             <p><b>Languages</b>: ${Object.values(country.languages)}</p>`;
@@ -53,28 +50,3 @@ function choisOneOfArray(listOfcountries) {
     info.innerHTML = markup;
   }
 }
-
-// function createListOfCountries(arrItem) {
-//   const markup = arrItem
-//     .map(country => {
-//       return `<li class='list_box'><img class='list_img' src="${country.flags.svg}" alt="flag">${country.name.official}</li>`;
-//     })
-//     .join('');
-//   list.innerHTML = markup;
-// }
-
-// function createOneCountry(arrItem) {
-//   const markup = arrItem
-//     .map(country => {
-//       return `<div>
-//       <img src="${country.flags.svg}" width="50" height="30" alt="flag of ${
-//         country.name.official
-//       }">
-//       <h2 class="country-title">${country.name.official}</h2></div>
-//             <p><b>Capital</b>: ${country.capital}</p>
-//             <p><b>Population</b>: ${country.population}</p>
-//             <p><b>Languages</b>: ${Object.values(country.languages)}</p>`;
-//     })
-//     .join('');
-//   info.innerHTML = markup;
-// }
