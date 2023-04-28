@@ -28,11 +28,21 @@ function choisOneOfArray(listOfcountries) {
     );
   } else if (listOfcountries.length <= 5) {
     console.log(listOfcountries);
+
+    const markup = listOfcountries
+      .map(country => {
+        return `<div class='list_box'>
+  <img class='list_img' src="${country.flags.svg}" alt="flag">
+  <div>${country.name.official}</div>
+</div>`;
+      })
+      .join('');
+    list.innerHTML = markup;
   } else if (listOfcountries.length === 1) {
     console.log(listOfcountries);
   }
 }
 
-console.log(input);
-console.log(list);
-console.log(info);
+// console.log(input);
+// console.log(list);
+// console.log(info);
