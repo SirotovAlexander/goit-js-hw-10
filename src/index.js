@@ -31,18 +31,24 @@ function choisOneOfArray(listOfcountries) {
 
     const markup = listOfcountries
       .map(country => {
-        return `<li class='list_box'>'
-  <img class='list_img' src="${country.flags.svg}" alt="flag">
-  <div>${country.name.official}</div>
-</li>`;
+        return `<li class='list_box'><img class='list_img' src="${country.flags.svg}" alt="flag">${country.name.official}</li>`;
       })
       .join('');
     list.innerHTML = markup;
   } else if (listOfcountries.length === 1) {
     console.log(listOfcountries);
+    const markup = listOfcountries
+      .map(country => {
+        return `<div>
+      <img src="${country.flags.svg}" width="50" height="30" alt="flag of ${
+          country.name.official
+        }">
+      <h2 class="country-title">${country.name.official}</h2></div>
+            <p><b>Capital</b>: ${country.capital}</p>
+            <p><b>Population</b>: ${country.population}</p>
+            <p><b>Languages</b>: ${Object.values(country.languages)}</p>`;
+      })
+      .join('');
+    info.insertAdjacentHTML = markup;
   }
 }
-
-// console.log(input);
-// console.log(list);
-// console.log(info);
