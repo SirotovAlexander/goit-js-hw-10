@@ -19,8 +19,9 @@ body {
   margin-bottom: 16px;
 }
 .list_box {
+  list-style: none;
+  margin-bottom: 10px;
   display: flex;
-  justify-content: baseline;
   align-items: center;
   gap: 10px;
 }

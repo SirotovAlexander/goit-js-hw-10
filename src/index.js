@@ -31,10 +31,10 @@ function choisOneOfArray(listOfcountries) {
 
     const markup = listOfcountries
       .map(country => {
-        return `<div class='list_box'>
+        return `<li class='list_box'>'
   <img class='list_img' src="${country.flags.svg}" alt="flag">
   <div>${country.name.official}</div>
-</div>`;
+</li>`;
       })
       .join('');
     list.innerHTML = markup;
