@@ -12,18 +12,21 @@ input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(event) {
   const nameOfCountry = event.target.value.trim();
-  if (!nameOfCountry) {
-    list.innerHTML = '';
-    info.innerHTML = '';
-  }
+
   fetchCountries(nameOfCountry)
     .then(data => choisOneOfArray(data))
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      list.innerHTML = '';
+      info.innerHTML = '';
+      Notiflix.Notify.failure('Oops, there is no country with that name');
+      return;
+    });
 }
 
 function choisOneOfArray(listOfcountries) {
   if (listOfcountries.length > 10) {
-    Notiflix.Notify.info(
+    return Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
     );
   } else if (listOfcountries.length > 1) {
